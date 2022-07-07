@@ -155,8 +155,7 @@ trans(){
 detrans(){
     http "https://lingva.ml/api/v1/en/iw/$*" |jq -r ".translation"
 }
-# my projects:
-# digitalwhisper
+# digitalwhisper - from https://github.com/MichaelYochpaz/DWScraper
 alias digital="$HOME/digitalwhisper/DWScraper/venv/bin/python $HOME/digitalwhisper/DWScraper/DWScraper.py issue"
 alias digital-last="$HOME/digitalwhisper/DWScraper/venv/bin/python $HOME/digitalwhisper/DWScraper/DWScraper.py last"
 alias term="ZSH_CUSTOM_THEME='' konsole & disown"
