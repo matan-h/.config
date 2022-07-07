@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Screensaver;Security
+Comment[en_IL]=XScreenSaver daemon: screen saver and locker
+Comment=XScreenSaver daemon: screen saver and locker
+Exec=xscreensaver -nosplash
+GenericName[en_IL]=xscreensaver
+GenericName=xscreensaver
+MimeType=
+Name[en_IL]=XScreensaver
+Name=XScreensaver
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
