@@ -1,0 +1,98 @@
+{
+  "terminal.integrated.profiles.linux": {
+      "zsh": {
+          "path": "/bin/zsh"
+      },
+
+  },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 16,
+    "files.exclude": {
+      ".ipynb_checkpoints": true,
+      "**/__pycache__": true,
+      "**/node_modules": true
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.bracketPairColorization.enabled": true,
+    "gitlens.hovers.currentLine.over": "line",
+    "terminal.integrated.fontSize": 16,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "git.enableSmartCommit": true,
+    "terminal.integrated.fontFamily": "monospace",
+    "terminal.integrated.env.linux": {
+      "ZSH_CUSTOM_THEME":"daveverwer"
+    },
+    "workbench.editor.enablePreview": false,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]":{
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "redhat.telemetry.enabled": false,
+    "todo-tree.filtering.excludeGlobs": [
+      "**/node_modules",
+      "**/lib"
+    ],
+    "editor.linkedEditing": true,
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "indentRainbow.errorColor": "rgba(0,0,0,0)",
+    "editWithShell.shell.linux": "/bin/zsh",
+    "editWithShell.shellArgs.linux": [
+      "-ic"
+    ],
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.confirmSync": false,
+    "window.menuBarVisibility": "toggle",
+    "gitlens.advanced.repositorySearchDepth": 0,
+    "jupyter.askForKernelRestart": false,
+    "search.exclude": {
+      "**/lib": true
+    },
+    "zenMode.hideLineNumbers": false,
+    "zenMode.fullScreen": false,
+    "zenMode.silentNotifications": false,
+    "prettier.tabWidth": 4,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "javascript.inlayHints.parameterNames.enabled": "literals",
+    "terminal.external.linuxExec": "zsh",
+    "telemetry.telemetryLevel": "off",
+    "java.autobuild.enabled": false,
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "java.import.gradle.enabled": false,
+    "java.import.maven.enabled": false,
+    "java.import.gradle.wrapper.enabled": false,
+    "java.project.importOnFirstTimeStartup": "disabled",
+    "java.progressReports.enabled": false,
+    "java.project.importHint": false,
+    "editor.guides.bracketPairs": false,
+    "gitlens.showWelcomeOnInstall": false,
+    "gitlens.showWhatsNewAfterUpgrades": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.hovers.enabled": false,
+    "github.gitAuthentication": false,
+    "blockman.n01LineHeight": 0,
+    "workbench.colorCustomizations": {
+      "editor.lineHighlightBackground": "#1073cf2d",
+      "editor.lineHighlightBorder": "#9fced11f"
+    },
+    "editor.wordWrap": "off",
+    "diffEditor.wordWrap": "off",
+    "editor.guides.indentation": false,
+    "window.zoomLevel": 1,
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.enabled": false,
+    "omnisharp.useGlobalMono": "always"
+}

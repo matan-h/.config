@@ -1,0 +1,180 @@
+#! /usr/bin/bash
+# history
+alias hsi='history | grep -i'
+alias hs="history -5" # last 5 history commands
+alias hsc="history -c" # clear history
+
+# python apps:
+alias venv"=source venv/bin/activate"
+alias cvenv"=python -m venv venv"
+
+# python net
+alias durl='http -d'
+alias urlencode='python3 -c "import sys; del sys.path[0]; import urllib.parse as up; print(up.quote_plus(sys.argv[1]))"'
+alias urldecode='python3 -c "import sys; del sys.path[0]; import urllib.parse as up; print(up.unquote_plus(sys.argv[1]))"'
+
+alias pp_json="python3 -m json.tool"
+
+# zsh userful tools
+# - zsh config
+alias zshconfig="code ~/.zshrc ~/.aliases"
+alias zsh-aliases="nvim ~/.aliases  ~/.zshrc"
+
+plug(){ # edit plugins
+    zsh_line=$(grep -n "^plugins=(" ~/.zshrc|awk '{print $1}' FS=":");
+    nano +"$zsh_line" ~/.zshrc
+}
+# pacman
+alias pacin="sudo pacman -Syu --needed"
+alias pacrm="sudo pacman -Sy --needed"
+alias pacup="sudo pacman -Syu"
+alias pacse="sudo pacman -Ss"
+alias pacseq="sudo pacman -Qs"
+alias pacinf="pacman -Si"
+alias pacinfq="pacman -Qi"
+alias "pacman?"="pacman -Q|grep"
+alias "paru?"="paru -Q|grep"
+alias "aur?"="aur -Q|grep"
+
+alias pacrm="sudo pacman -Rsu"
+alias pacorp="sudo pacman -Rsu"
+alias pacfile="sudo pacman -Qo"
+alias paccls="sudo pacman -Sc"
+# paru
+alias sysup="paru -Syu"
+alias aur.comments="paru -Gc"
+alias aur="paru"
+alias par="paru"
+
+pacmani(){ # pacman info
+    pacman -Si "$@" |bat -l yml
+}
+
+alias zshrc="omz reload"
+# -  linux system
+alias find_proc="ps -aux | grep"
+alias "?"='help'
+alias tcn='mv --force -t ~/.local/share/Trash '
+alias del='mv --force -t ~/.local/share/Trash '
+
+alias py='python'
+alias v='nvim'
+alias hx='helix'
+alias "E"='code'
+alias sudovim='sudo nvim'
+alias sch='sudo chmod'
+alias sudoch='sudo chmod'
+alias e.='start .'
+
+# fix common mistakes
+alias "sl"="ls"
+alias "cd.."="cd .."
+alias "start."="start ."
+alias "code."="code ."
+
+# - simple shortcuts
+alias copydir="print -n \$PWD | clipcopy"
+# git
+alias gitam="git commit -a -m"
+alias gitu='git add . && git commit && git push'
+alias gitp='git pull'
+alias g='git '
+
+# chmod
+alias chx="chmod +x"
+alias ch666="chmod 666"
+
+# better builtin linux commands
+alias l="exa --git"
+alias "L"="exa -la --git --group-directories-first"
+alias "ll"="exa -la --git --group-directories-first"
+alias rm='rm -I'                                                # confirm before removing a lot of files.
+alias cp="cp -iv"                                               # Confirm before overwriting something and verbose
+alias mv="mv -iv"                                               # Confirm before overwriting something and verbose
+alias df='df -h'                                                # Human-readable sizes
+alias free='free -h'                                            # Human-readable sizes
+alias du="du -c -h"                                             # Human-readable sizes and total size
+alias ping="ping -c 5"                                          # Stop after 5 pings
+alias lsblk="grc lsblk -o name,mountpoint,label,size,fstype,uuid" # show more info in color
+# debian-like commands
+alias 'update-grub'='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+# windows like commands
+alias start="xdg-open"
+alias help="run-help"
+alias ren="mv"
+alias cls="clear"
+
+alias mkdirs="mkdir -pv"
+alias rmtree="rm -rf"
+alias create="touch"
+# macos like (not much - just to use navi)
+alias pbcopy='clipcopy'
+alias pbpaste='clippaste'
+
+
+# hooks
+alias "$"="" # simple hook for copy/paste like "$ apt install ..."
+
+# net
+alias net-connected-full="nmcli -f STATE -t"
+alias net-connected="nmcli -f STATE -t g"
+alias net-trace="nmcli -f STATE -t m"
+# nmap and ips
+myip(){
+    ip -json addr show dev enp7s0  |jq -r '.[0].addr_info | map(select(.family == "inet"))[0].local'
+}
+alias netscan='sudo nmap -sn -4 `myip`/24'
+# ctf
+alias stringsx="strings -n 7 -t x " # strings only lines with 7+ readable and print offset
+alias filex="trid" # program sometimes better then file in binary files
+alias pngcheck="pngcheck -tp7" # print more then the normal pngcheck
+
+# external apps
+alias trid='LANG="" trid'  # trid not work with $LANG
+
+# - files
+alias ccat='pygmentize -g' # color cat
+alias fzc="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+
+alias batdiff="git diff --name-only --diff-filter=d | xargs bat"
+alias beep="paplay /usr/share/sounds/kapman/bonus.ogg"
+# zoxide
+alias j="z"
+alias c="z"
+
+alias how="cht.sh"
+# curl apps
+alias 0x0="curl -F 'file=@-' 0x0.st"
+alias 0x0-file="curl -F 'file=@-' 0x0.st < "
+
+# translate
+trans(){
+    http "https://lingva.ml/api/v1/iw/en/$*" |jq -r ".translation"
+}
+detrans(){
+    http "https://lingva.ml/api/v1/en/iw/$*" |jq -r ".translation"
+}
+# my projects:
+# digitalwhisper
+alias digital="$HOME/digitalwhisper/DWScraper/venv/bin/python $HOME/digitalwhisper/DWScraper/DWScraper.py issue"
+alias digital-last="$HOME/digitalwhisper/DWScraper/venv/bin/python $HOME/digitalwhisper/DWScraper/DWScraper.py last"
+alias term="ZSH_CUSTOM_THEME='' konsole & disown"
+
+##############
+# manege
+countdown(){
+    termdown "$1" && notify-send "TIMER UP" "$2" -u critical && beep
+}
+# arduino
+alias "ard"='arduino-cli'
+alias "ard-config"='arduino-cli config'
+alias "ard-init"='arduino-cli config init --dest-dir .'
+alias "ard-sketch"='arduino-cli sketch new'
+alias "ard-update"='arduino-cli core update-index'
+alias "ard-upgrade"='arduino-cli core upgrade'
+alias "ard-list"='arduino-cli board list'
+alias "ard-lb"='arduino-cli lib'
+alias "ard-run"='arduino-cli compile --fqbn $FQBN --upload --libraries --libraries $HOME/Arduino/libraries'
+alias "ard-compile"='arduino-cli compile --fqbn $FQBN --libraries $HOME/Arduino/libraries'
+
