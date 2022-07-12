@@ -32,8 +32,6 @@ and 107 more aliases
 * [settings.json](.config/Code/User/settings.json) - my vscode settings (zsh terminal with custom theme, git,java,js)
 * [autostart](.config/autostart) - xscreensaver desktop file that run on start
 * [.xscreensaver](.xscreensaver) - my xscreensaver settings (my favorite screensavers, text source:fortune command,image source:random image from xkcd)
-* [gtk-3/settings.ini](.config/gtk-3/settings.ini) - simple config for gtk-3 (for plasma DE)
-* [gtk-4/settings.ini](.config/gtk-3/settings.ini) - simple config for gtk-4 (for plasma DE)
 * [init.vim](.config/nvim/init.vim) - mininal nvim settings for c
 
 
