@@ -1,5 +1,5 @@
 # my dotfiles 
-dotfiles maneged by [yadm](https://yadm.io)
+dotfiles managed by [yadm](https://yadm.io)
 
 * [.zshrc](.zshrc) - oh my zsh plugins + environment:
 
