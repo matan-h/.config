@@ -152,6 +152,8 @@ export SEC="/usr/share/seclists" # path to seclists
 export NVM_DIR="/usr/share/nvm";
 
 alias nvm='unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && . "$NVM_DIR/nvm.sh";nvm'
+# bind ctrl+backspace to delete previous word
+bindkey '^H' backward-kill-word
 eval "$(zoxide init zsh)"
 
 

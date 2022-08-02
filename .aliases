@@ -60,7 +60,15 @@ alias del='mv --force -t ~/.local/share/Trash ' # same, with alias like windows
 alias "dmesg?"="sudo dmesg|grep -C 10"          # grep the kernel messege in 10 line after and before
 
 # simple shortcuts
-alias "?"='help'  # use: ? bash
+alias "?"='grep'  # use: cat file|? string
+
+nushell(){ # use: strings file|nushell
+    text=$(cat)
+    export text
+    echo "you can acsses the text with \$env.text"
+    nu
+}
+
 alias py='python' # like windows "py" command
 alias v='nvim'    # one letter to v
 alias hx='helix'  # two letter to helix text editor

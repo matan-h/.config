@@ -74,7 +74,6 @@
     "java.project.importOnFirstTimeStartup": "disabled",
     "java.progressReports.enabled": false,
     "java.project.importHint": false,
-    "editor.guides.bracketPairs": false,
     "gitlens.showWelcomeOnInstall": false,
     "gitlens.showWhatsNewAfterUpgrades": false,
     "gitlens.currentLine.enabled": false,
@@ -88,11 +87,11 @@
     },
     "editor.wordWrap": "off",
     "diffEditor.wordWrap": "off",
-    "editor.guides.indentation": false,
     "window.zoomLevel": 1,
     "[typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "cSpell.enabled": false,
-    "omnisharp.useGlobalMono": "always"
+    "omnisharp.useGlobalMono": "always",
+    "editor.guides.bracketPairs": "active"
 }
