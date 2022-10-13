@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH="/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/emulator:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/node_modules/.bin/:$PATH"
+export PATH="/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/emulator:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.cargo/bin/:$HOME/node_modules/.bin/:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 if [[ -n "$ZSH_CUSTOM_THEME" ]]
@@ -113,7 +113,8 @@ alias help=run-help
 
 export MANPAGER="less -R --use-color -Dd+r -Du+b" # color man
 # export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-eval `keychain -q --eval --agents ssh id_ed25519 --nogui --noask --agents ssh,gpg`  # git
+# eval `keychain -q --eval --agents ssh id_ed25519 --nogui --noask --agents ssh,gpg`  # git
+eval $(keychain --eval --quiet --noask --nogui ~/.ssh/id_ed25519)  # git
 
 source $ZSH/oh-my-zsh.sh
 

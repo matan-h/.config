@@ -68,6 +68,9 @@ nushell(){ # use: strings file|nushell
     echo "you can acsses the text with \$env.text"
     nu
 }
+# using rsync as cp/mv
+alias cpr="rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1"
+alias mvr="rsync --archive -hh --partial --info=stats1,progress2 --modify-window=1 --remove-source-files"
 
 alias py='python' # like windows "py" command
 alias v='nvim'    # one letter to v
@@ -100,6 +103,8 @@ alias "ll"="exa -la --git --group-directories-first"            # same
 alias rm='rm -I'                                                # confirm before removing a lot of files.
 alias cp="cp -iv"                                               # Confirm before overwriting something and verbose
 alias mv="mv -iv"                                               # Confirm before overwriting something and verbose
+
+
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -h'                                            # Human-readable sizes
 alias du="du -c -h"                                             # Human-readable sizes and total size

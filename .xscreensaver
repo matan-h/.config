@@ -55,7 +55,7 @@ programs:								      \
 -				decayscreen -root			    \n\
 -				flame -root				    \n\
 -				halo -root				    \n\
-				slidescreen -root			    \n\
+-				slidescreen -root			    \n\
 -				pedal -root				    \n\
 -				bouboule -root				    \n\
 -				braid -root				    \n\
@@ -92,7 +92,8 @@ programs:								      \
 -				xjack -root				    \n\
 -				xlyap -root				    \n\
   GL: 				atlantis -root				    \n\
--				bsod -root				    \n\
+-				bsod -root -delay 54 -no-msdos -android	      \
+				  -atari -no-nintendo -bsd -sparclinux	    \n\
 - GL: 				bubble3d -root				    \n\
 - GL: 				cage -root				    \n\
 -				crystal -root				    \n\
@@ -107,7 +108,7 @@ programs:								      \
 - GL: 				lament -root				    \n\
 -				moire2 -root				    \n\
 - GL: 				sonar -root				    \n\
-- GL: 				stairs -root				    \n\
+  GL: 				stairs -root				    \n\
 -				truchet -root				    \n\
 -				vidwhacker -root			    \n\
 -				blaster -root				    \n\
@@ -131,7 +132,7 @@ programs:								      \
 -				webcollage -root			    \n\
 -				xflame -root				    \n\
 -				xmatrix -root				    \n\
-  GL: 				gflux -root				    \n\
+- GL: 				gflux -root				    \n\
 -				nerverot -root				    \n\
 -				xrayswarm -root				    \n\
 -				xspirograph -root			    \n\
