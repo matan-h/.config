@@ -78,7 +78,8 @@ alias hx='helix'  # two letter to helix text editor
 alias "E"='code'  # one letter to vscode
 alias sudovim='sudo nvim' # remove space between sudo and nevim
 alias sudoch='sudo chmod' # chenge permission of file using sudo
-alias e.='start .' # start file maneger
+alias start.="kioclient exec . 2>/dev/null" # exec file maneger without printing errors
+alias e.='start.' # start file maneger
 alias create="touch" # create new file is more sensible with "create"
 alias copydir="copypath" # use the copypath plugin instead of "echo $PWD"
 

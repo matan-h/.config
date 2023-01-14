@@ -1,5 +1,6 @@
+export ANDROID_HOME="$HOME/Android/Sdk"
 # If you come from bash you might have to change your $PATH.
-export PATH="/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/emulator:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.cargo/bin/:$HOME/node_modules/.bin/:$PATH"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.cargo/bin/:$HOME/node_modules/.bin/:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 if [[ -n "$ZSH_CUSTOM_THEME" ]]
@@ -12,6 +13,15 @@ else
     # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
     ZSH_THEME="agnoster"
 fi
+if [[ $ZSH_THEME = "powerlevel10k/powerlevel10k" ]];then
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+fi
+
 # seopt
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
 setopt numericglobsort                                          # Sort filenames numerically when it makes sense
@@ -148,9 +158,9 @@ source "$HOME/.aliases"
 source "$HOME/.config/up/up.sh"
 
 export EDITOR="nvim"
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 export SEC="/usr/share/seclists" # path to seclists
-export NVM_DIR="/usr/share/nvm";
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
 alias nvm='unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && . "$NVM_DIR/nvm.sh";nvm'
 # bind ctrl+backspace to delete previous word
@@ -159,3 +169,8 @@ eval "$(zoxide init zsh)"
 
 
 # alias z="unalias z; eval \"\$(zoxide init zsh)\";z"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+add-zsh-hook -Uz chpwd(){ source <(tea -Eds) }  #teaxyz

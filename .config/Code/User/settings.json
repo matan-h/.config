@@ -90,10 +90,21 @@
     "[typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "cSpell.enabled": false,
     "omnisharp.useGlobalMono": "always",
     "editor.guides.bracketPairs": "active",
     "window.zoomLevel": 1,
     "editor.unicodeHighlight.ambiguousCharacters": false,
-    "Lua.telemetry.enable": false
+    "Lua.telemetry.enable": false,
+    "workbench.startupEditor": "none",
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "debug.onTaskErrors": "showErrors",
+    "java.configuration.runtimes": [
+      {
+        "name": "JavaSE-17",
+        "path": "/usr/lib/jvm/java-17-openjdk",
+        "default": true
+      }
+    ],
+    "cSpell.enabled": false,
+    "cmake.configureOnOpen": false,
 }
