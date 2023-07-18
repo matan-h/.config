@@ -20,7 +20,9 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "git.enableSmartCommit": true,
-    "terminal.integrated.fontFamily": "monospace",
+    "editor.fontFamily": "Fira Code",
+    "terminal.integrated.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
     "terminal.integrated.env.linux": {
       "ZSH_CUSTOM_THEME":"daveverwer"
     },
@@ -107,4 +109,11 @@
     ],
     "cSpell.enabled": false,
     "cmake.configureOnOpen": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.defaultInterpreterPath": "/usr/bin/python",
+    "dart.devToolsBrowser": "default",
+    "dart.openDevTools": "flutter",
+    "dart.devToolsLocation": "external",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "dart.showTodos": false,
 }

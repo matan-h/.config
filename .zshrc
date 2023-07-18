@@ -97,7 +97,7 @@ ZSH_WEB_SEARCH_ENGINES=(
     archwiki "https://wiki.archlinux.org/index.php?search="
     gmail "https://mail.google.com/mail/u/0/#search/"
 )
-plugins=(git-extras colored-man-pages command-not-found encode64 extract sudo fzf yarn copypath archlinux gh web-search copyfile copybuffer dirhistory httpie aliases)
+plugins=(git-extras colored-man-pages command-not-found encode64 extract sudo fzf yarn copypath archlinux gh web-search copyfile copybuffer dirhistory httpie aliases flutter)
 # git-extras,completion,archlinux,encode64,httpie - completion and aliases
 # colored-man-pages   add color to man
 # command-not-found   provide suggested packages (using pkgfile)
