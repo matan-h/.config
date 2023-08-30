@@ -1,3 +1,4 @@
+
 #! /usr/bin/bash
 # history
 alias hsi='history | grep -i' # search history
@@ -6,9 +7,9 @@ alias hsc="history -c"        # clear history
 
 # python apps:
 # venv:
-alias venv"=source venv/bin/activate" # activate python virtualenv
-alias cvenv"=python -m venv venv"     # create python virtualenv
-alias uvenv"=cvenv && venv && python -m pip install pip setuptools wheel -U" # create python virtualenv,activate it, and upgrade it
+alias venv="source venv/bin/activate" # activate python virtualenv
+alias cvenv="python -m venv venv"     # create python virtualenv
+alias uvenv="cvenv && venv && python -m pip install pip setuptools wheel -U" # create python virtualenv,activate it, and upgrade it
 # net:
 alias durl='http -d' # download file using httpie (usually better and slower then wget)
 # decode/encode url from stdin or from command line arguments:
@@ -24,33 +25,27 @@ alias zshrc="omz reload" # reload the zsh shell (better then `source ~/.zshrc`)
 
 plug(){ # edit plugins line on nano
     zsh_line=$(grep -n "^plugins=(" ~/.zshrc|awk '{print $1}' FS=":");
-    nano +"$zsh_line" ~/.zshrc
+    micro +"$zsh_line" ~/.zshrc
 }
 # pacman
-alias pacin="sudo pacman -Syu --needed" # upgrade system && install package if not installed yet (this is the normal way of installing package on arch)
-alias pacins="sudo pacman -S --needed" # install package if not installed yet (without upgrade system)
-alias pacup="sudo pacman -Syu"   # upgrade system
-alias pacse="sudo pacman -Ss"    # search for package remotely
-alias pacseq="sudo pacman -Qs"   # search for package locally
-alias pacinf="pacman -Si"        # get info on package remotely
-alias pacinfq="pacman -Qi"       # get info on package locally
-alias "pacman?"="pacman -Q|grep" # grep package locally
+alias dnfin="sudo dnf install" # upgrade system && install package if not installed yet (this is the normal way of installing package on arch)
+# alias pacins="sudo pacman -S --needed" # install package if not installed yet (without upgrade system)
+alias dnfup="sudo dnf upgrade"   # upgrade system
+alias dnfse="dnf search"    # search for package remotely
+alias dnfseq="dnf list --installed"   # search for package locally
+alias dnfinf="dnf info"        # get info on package remotely
+alias dnfinfq="dnf info --installed"       # get info on package locally
+alias "dnf?"="dnf list --installed|grep" # grep package locally
+alias "dnf??"="dnf list|grep" # grep package online and offline
+alias "dnf???"="dnf list --available|grep" # grep package only online
 
-alias pacrm="sudo pacman -Rsu"  # Remove Package with all its dependencies
-alias pacdrm="sudo pacman -Rc"  # Remove Package with all its dependencies and the packages depends on it
-alias pacfile="sudo pacman -Qo" # Determining which Package Owns a File
-alias paccls="sudo pacman -Sc"  # clear the cache of packages that are no longer installed
+alias dnfrm="sudo dnf remove"  # Remove Package with all its dependencies
+alias dnffile="rpm -qf" # Determining which Package Owns a File
+alias dnfcls="sudo dnf clean dbcache"  # clear the dnf db cache
 
 # paru - AUR helper
-alias sysup="paru -Syu"        # update system && update AUR packages
-alias aur.comments="paru -Gc"  # see comments on AUR website
-alias aur="paru"               # shortcut for simple - "aur -s paru"
-alias par="paru"               # shortcut for paru without the "u"
-alias "paru?"="paru -Q|grep"   # grep aur package locally
-alias "aur?"="paru -Q|grep"    # same
-
-pacinfo(){ # pacman info with color with bat
-    pacman -Si "$@" |bat -pl yml
+dnfinfo(){ # dnf info with color with bat
+    dnf info |bat -pl yml
 }
 
 # -  linux system manege

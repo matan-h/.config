@@ -2,7 +2,7 @@
 # Written by xscreensaver-settings 6.06 for matan-h on Tue Mar  7 14:08:25 2023.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	0:05:00
+timeout:	999:05:00
 cycle:		0:03:00
 lock:		False
 lockTimeout:	0:00:00
@@ -10,8 +10,8 @@ passwdTimeout:	0:00:30
 visualID:	default
 installColormap:    True
 verbose:	False
-splash:		True
-splashDuration:	0:00:05
+splash:		False
+splashDuration:	0:00:00
 demoCommand:	xscreensaver-settings
 nice:		10
 fade:		False

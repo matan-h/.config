@@ -1,6 +1,6 @@
 export ANDROID_HOME="$HOME/Android/Sdk"
 # If you come from bash you might have to change your $PATH.
-export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.cargo/bin/:$HOME/node_modules/.bin/:$PATH"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.cargo/bin/:$HOME/node_modules/.bin/:$HOME/.flutter/bin:$HOME/.local/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 if [[ -n "$ZSH_CUSTOM_THEME" ]]
@@ -97,7 +97,7 @@ ZSH_WEB_SEARCH_ENGINES=(
     archwiki "https://wiki.archlinux.org/index.php?search="
     gmail "https://mail.google.com/mail/u/0/#search/"
 )
-plugins=(git-extras colored-man-pages command-not-found encode64 extract sudo fzf yarn copypath archlinux gh web-search copyfile copybuffer dirhistory httpie aliases flutter)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git-extras colored-man-pages command-not-found encode64 extract sudo fzf yarn copypath archlinux gh web-search copyfile copybuffer dirhistory httpie aliases flutter)
 # git-extras,completion,archlinux,encode64,httpie - completion and aliases
 # colored-man-pages   add color to man
 # command-not-found   provide suggested packages (using pkgfile)
@@ -111,11 +111,6 @@ plugins=(git-extras colored-man-pages command-not-found encode64 extract sudo fz
 # dirhistory          keyboard shortcuts for navigating directory history (alt+LEFT go to previous directory,etc)
 # aliases             add "acs" command to show all aliases sorted by categories
 
-# source arch zsh-syntax-highlighting and autosuggestions
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-
 # disable arch run-help and enable zsh run-help
 autoload -Uz run-help
 (( ${+aliases[run-help]} )) && unalias run-help
@@ -124,7 +119,7 @@ alias help=run-help
 export MANPAGER="less -R --use-color -Dd+r -Du+b" # color man
 # export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # eval `keychain -q --eval --agents ssh id_ed25519 --nogui --noask --agents ssh,gpg`  # git
-eval $(keychain --eval --quiet --noask --nogui ~/.ssh/id_ed25519)  # git
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -172,5 +167,3 @@ eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-add-zsh-hook -Uz chpwd(){ source <(tea -Eds) }  #teaxyz

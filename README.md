@@ -1,7 +1,7 @@
 # my dotfiles 
 dotfiles managed by [yadm](https://yadm.io)
 
-* [.zshrc](.zshrc) - oh my zsh plugins + environment:
+* [.zshrc](.zshrc) - oh my zsh plugins + environment :
 
 | Plugin              | Description                                                                                 |
 |---------------------|---------------------------------------------------------------------------------------------|
@@ -31,8 +31,6 @@ and 107 more aliases
 
 * [settings.json](.config/Code/User/settings.json) - my vscode settings (zsh terminal with custom theme, git,java,js)
 * [autostart](.config/autostart) - xscreensaver desktop file that run on start
-* [.xscreensaver](.xscreensaver) - my xscreensaver settings (my favorite screensavers, text source:fortune command,image source:random image from xkcd)
-* [init.vim](.config/nvim/init.vim) - mininal nvim settings for c
 
 
 
