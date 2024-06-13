@@ -2,9 +2,9 @@
 
 dotfiles managed by [git](https://stackoverflow.com/a/64548852)
 
-* [config.fish](.config/fish/config.fish) - Simple fish startup file: helpful (and colorful) `fish_greeting`, source the `.aliases.fish` file [if exist], and bind some standard keybindings
+* [config.fish](/.config/fish/config.fish) - Simple fish startup file: helpful (and colorful) `fish_greeting`, source the `.aliases.fish` file [if exist], and bind some standard keybindings
 
-* [.aliases.fish](.aliases.fish) - fish functions (`alias`,`function` and `abbr`).
+* [.aliases.fish](/.aliases.fish) - fish functions (`alias`,`function` and `abbr`).
 
 | alias                  | definitions                                                                      |
 | ---------------------- | -------------------------------------------------------------------------------- |
@@ -20,6 +20,6 @@ and many more
 
 All functions, is built in a way that you get only what you have (e.g. if you dont have python, you wouldnt get all the python aliases, etc.)
 
-* [install.fish](.dotfiles/install.fish) - a simple, short installer that install fisher, the fzf plugin and the tilde prompt.
+* [install.fish](/.dotfiles/install.fish) - a simple, short installer that install fisher, the fzf plugin and the tilde prompt.
 
 
