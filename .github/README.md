@@ -14,7 +14,12 @@ dotfiles managed by [git](https://stackoverflow.com/a/64548852)
 | `lstime`               | list files sorted by modification time (using `eza` if you have, or using `ls`.) |
 | `clipcopy`,`clippaste` | copy/paste text to the clipboard (both wayland and x11)                          |
 | `start`,`kstart`       | start file in normal application (`kstart` uses kde command line)                |
+| `cls`,`ren`, `mkdirs`  | allow you to type simple commands from windows                                   |
 
 and many more
+
+All functions, is built in a way that you get only what you have (e.g. if you dont have python, you wouldnt get all the python aliases, etc.)
+
+* [install.fish](.dotfiles/install.fish) - a simple, short installer that install fisher, the fzf plugin and the tilde prompt.
 
 

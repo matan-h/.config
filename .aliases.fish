@@ -152,6 +152,8 @@ abbr ren mv # rename file is actually moving it to another name
 abbr cls clear
 
 abbr mkdirs "mkdir -pv" # Create directories recursively with verbose
+abbr md "mkdir"
+abbr rd "rmdir"
 abbr rmtree "rm -r" # remove folder recursively
 
 if command -q bandwhich
