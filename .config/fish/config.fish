@@ -2,7 +2,10 @@
 set -U --append fish_features qmark-noglob # disable the "?" glob
 # add to path
 # set -x PATH "$HOME/bin" $PATH
-
+function add_path
+    test -r $argv && fish_add_path $argv
+end
+add_path $HOME/.cargo/bin
 
 # just using export instead of set -gx because it's easier.
 export LESS="-RSM~gIsw" # ansi color inside less (blog.0x1fff.com/posts/2009/2009-11-17-linux-tip-color-enabled-pager-less) [gh:yangchenyun/fish-config]

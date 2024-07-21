@@ -221,3 +221,9 @@ if command -q mono
         mcs -out:program.exe $filename && mono program.exe
     end
 end
+# web dev:
+if command -q yarn
+    alias yst 'yarn start'
+    alias ya 'yarn add'
+end
+
