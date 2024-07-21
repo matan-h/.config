@@ -8,23 +8,45 @@ if command -q python
     alias uvenv "cvenv && venv && python -m pip install pip setuptools wheel -U" # create python virtualenv,activate it, and upgrade it
     abbr py python
 end
-# dnf:
-if command -q dnf
-    abbr dnfin "sudo dnf install" # install package
-    abbr dnfup "sudo dnf upgrade" # upgrade system
-    abbr dnfse "dnf search" # search for package remotely
-    abbr dnfseq "dnf list --installed" # search for package locally
-    abbr dnfinf "dnf info" # get info on package remotely
-    abbr dnfinfq "dnf info --installed" # get info on package locally
-    abbr "dnf?" "dnf list --installed|grep" # grep package locally
-    abbr "dnf??" "dnf list|grep" # grep package online and offline
-    abbr "dnf???" "dnf list --available|grep" # grep package only online
 
-    abbr dnfrm "sudo dnf remove" # Remove Package with all its dependencies
-    abbr dnffile "rpm -qf" # Determining which Package Owns a File
-    function dnfinfo # dnf info with color with bat
-        dnf info $argv | bat -pl yml
+# batcat -> bat
+if command -q batcat && not command -q bat
+    alias bat batcat
+end
+
+# dnf:
+if command -q dnf || command -q apt
+    if command -q dnf
+        set pm dnf
+    else
+        set pm apt
     end
+    abbr {$pm}in "sudo $pm install" # install package
+    abbr {$pm}up "sudo $pm upgrade" # upgrade system
+    abbr "{$pm}rm" "sudo $pm remove" # Remove Package with all its dependencies
+    abbr {$pm}se "$pm search" # search for package remotely
+    abbr {$pm}seq "$pm list --installed" # search for package locally
+
+    abbr "{$pm}?" "$pm list --installed|grep" # grep package locally
+    abbr "{$pm}??" "$pm list|grep" # grep package online and offline
+
+    if [ "$pm" = apt ]
+        abbr aptinf "apt show"
+        abbr aptfile "dpkg -S"
+        function aptinfo
+            apt show $argv | bat -pl yml
+        end
+    else
+        abbr dnfinf "dnf info" # get info on package remotely
+        abbr dnfinfq "dnf info --installed" # get info on package locally
+        abbr "dnf???" "dnf list --available|grep" # grep package only online    
+        abbr dnffile "rpm -qf" # Determining which Package Owns a File
+        function dnfinfo
+            dnf info $argv | bat -pl yml
+        end
+    end
+
+
 end
 # aliases:linux system
 if command -q ps
@@ -51,7 +73,7 @@ if [ $XDG_SESSION_TYPE = wayland ] && command -q wl-copy
 
 else if [ $XDG_SESSION_TYPE = x11 ] && command -q xclip
     alias clipcopy 'xclip -sel clip'
-    alias clippaste 'xclip -sel clip'
+    alias clippaste 'xclip -sel clip -o'
 end
 
 # KDE
@@ -59,7 +81,11 @@ if command -q kioclient
     alias kstart "kioclient exec --noninteractive"
     abbr start. "kstart ." # exec file maneger
     abbr kstart. "kstart ."
+else
+    abbr start. 'start .'
 end
+# Gnome
+
 
 # simple shortcuts
 if command -q micro
@@ -134,28 +160,38 @@ alias fishrc="exec fish"
 # manage dotfiles - so:a:64548852
 export DOTFILES_GIT="$HOME/.dotfiles/git"
 alias dotfiles 'git --git-dir=$DOTFILES_GIT --work-tree=$HOME' # so:a:64548852
-alias dotfiles-init "git init --bare $DOTFILES_GIT && dotfiles config --local status.showUntrackedFiles no"  # so:a:64548852 + so:a:65847027
+alias dotfiles-init "git init --bare $DOTFILES_GIT && dotfiles config --local status.showUntrackedFiles no" # so:a:64548852 + so:a:65847027
 alias fishconfig "kate ~/.config/fish/config.fish ~/.aliases.fish"
 alias dotconfig "codium ~/.config/fish/config.fish ~/.aliases.fish ~/.github/README.md ~/.dotfiles/install.fish"
 
 # fish shell
 abbr where type
-abbr --set-cursor=% what "bat (which %)"
+if 	printf '%s\n' 3.6 $version | sort --check=silent --version-sort # check if fish version is greater then 3.6
+    abbr --set-cursor=% what "bat (which %)"
+else
+    function what
+        bat (which $argv)
+    end
+end
+
+function 'alias?'
+    alias | grep "$argv"
+end
+# alias "alias?" "alias | grep"
 
 functions -c history old_history
 alias history 'PAGER="bat --file-name \"fish history\" -l fish" old_history' # enable syntax highlighting in fish history pager. see (my) unix.stackexchange.com/q/778285
 
 # windows like commands
-abbr start xdg-open # xdg-open:linux is "open":mac or "start":windows
+alias start xdg-open # xdg-open:linux is "open":mac or "start":windows
 
 abbr ren mv # rename file is actually moving it to another name
 abbr cls clear
 
 abbr mkdirs "mkdir -pv" # Create directories recursively with verbose
-abbr md "mkdir"
-abbr rd "rmdir"
+abbr md mkdir
+abbr rd rmdir
 abbr rmtree "rm -r" # remove folder recursively
-
 if command -q bandwhich
     abbr bandwhich "sudo bandwhich" # bandwhich only work with sudo.
 end
@@ -172,15 +208,34 @@ if command -q zoxide
     abbr c z
 end
 
-if command -q ffplay
-    alias beep "ffplay -nodisp -autoexit -nostats -hide_banner /usr/share/sounds/ocean/stereo/service-login.oga" # play the kapman sound as alert music
+# find a file to beep
+set -l file
+for file in '/usr/share/sounds/ocean/stereo/service-login.oga' '/usr/share/sounds/linuxmint-login.wav'
+    if test -r $file
+        break
+    end
 end
 
-abbr term "konsole & disown" # create new konsole windows
+if command -q ffplay && test -r $file
+    alias beep "ffplay -nodisp -autoexit -nostats -hide_banner $file" # play a sound as alert music
+end
+
+
+set -l term
+if command -q kosnole
+    set term konsole
+else if command -q gnome-terminal
+    set term gnome-terminal
+end
+
+if set -q term
+    abbr term "$term & disown" # create new konsole windows
+end
 
 # adb
-if command -q adb
-    alias adb-shell "$HOME/projects/adb-shell/adb-shell.sh"
+set -l adb_shell_project "$HOME/projects/adb-shell/adb-shell.sh"
+if command -q adb && test -r "$adb_shell_project"
+    alias adb-shell "$adb_shell_project"
 end
 
 
