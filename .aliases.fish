@@ -67,11 +67,11 @@ if command -q rsync
 end
 
 # wayland
-if [ $XDG_SESSION_TYPE = wayland ] && command -q wl-copy
+if [ "$XDG_SESSION_TYPE" = wayland ] && command -q wl-copy
     alias clipcopy wl-copy
     alias clippaste wl-paste
 
-else if [ $XDG_SESSION_TYPE = x11 ] && command -q xclip
+else if [ "$XDG_SESSION_TYPE" = x11 ] && command -q xclip
     alias clipcopy 'xclip -sel clip'
     alias clippaste 'xclip -sel clip -o'
 end

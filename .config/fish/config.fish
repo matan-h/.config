@@ -6,6 +6,9 @@ function add_path
     test -r $argv && fish_add_path $argv
 end
 add_path $HOME/.cargo/bin
+add_path $HOME/.flutter/sdk/flutter/bin
+add_path $HOME/Android/Sdk/cmdline-tools/latest/bin
+
 
 # just using export instead of set -gx because it's easier.
 export LESS="-RSM~gIsw" # ansi color inside less (blog.0x1fff.com/posts/2009/2009-11-17-linux-tip-color-enabled-pager-less) [gh:yangchenyun/fish-config]
