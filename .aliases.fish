@@ -56,8 +56,8 @@ end
 alias del 'mv --force -t ~/.local/share/Trash ' # same, with alias like windows
 
 if command -q dmesg
-    abbr dmesg "sudo dmesg" # automaticly add sudo to dmesg
-    abbr "dmesg?" "sudo dmesg | grep -C 10" # grep the kernel messege in 10 line after and before
+    abbr dmesg "sudo dmesg" # automatically add sudo to dmesg
+    abbr "dmesg?" "sudo dmesg | grep -C 10" # grep the kernel message in 10 line after and before
 end
 
 # using rsync as cp/mv with progress.
@@ -139,13 +139,13 @@ else
     abbr ll "ls -lhA"
 end
 
-abbr mv 'mv -iv'
-abbr rm 'rm -Iv'
-abbr cp 'cp -iv'
+alias mv 'mv -iv'
+alias rm 'rm -Iv'
+alias cp 'cp -iv'
 
-abbr df 'df -h' # Human-readable sizes
-abbr free 'free -h' # Human-readable sizes
-abbr du "du -c -h" # Human-readable sizes and total size
+alias df 'df -h' # Human-readable sizes
+alias free 'free -h' # Human-readable sizes
+alias du "du -c -h" # Human-readable sizes and total size
 
 if command -q grc
     alias lsblk "grc lsblk -o name,mountpoint,label,size,fstype,uuid" # show more info in color
@@ -282,3 +282,8 @@ if command -q yarn
     alias ya 'yarn add'
 end
 
+# flutter
+if command -q flutter
+    alias flpub 'flutter pub'
+    alias flrun 'flutter run'
+end

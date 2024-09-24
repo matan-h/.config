@@ -6,8 +6,19 @@ function add_path
     test -r $argv && fish_add_path $argv
 end
 add_path $HOME/.cargo/bin
+
 add_path $HOME/.flutter/sdk/flutter/bin
 add_path $HOME/Android/Sdk/cmdline-tools/latest/bin
+
+
+add_path $HOME/.deno/bin
+
+# add android/flutter to path.
+add_path $HOME/Android/Flutter/bin
+export ANDROID_HOME="$HOME/Android/Sdk"
+add_path $ANDROID_HOME/cmdline-tools/latest/bin
+add_path $ANDROID_HOME/emulator
+add_path $ANDROID_HOME/build-tools/latest
 
 
 # just using export instead of set -gx because it's easier.
@@ -38,4 +49,8 @@ if status is-interactive
 
 
     set fish_greeting Welcome to (set_color cyan)fish(set_color normal), the friendly interactive shell\nUndo: (set_color green)ctrl+/(set_color normal)
+    if set -q _fish_hide_prompt
+        # hide fish_greeting
+        set -g fish_greeting
+    end
 end
