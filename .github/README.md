@@ -23,3 +23,16 @@ All functions, is built in a way that you get only what you have (e.g. if you do
 * [install.fish](/.dotfiles/install.fish) - a simple, short installer that install fisher, the fzf plugin and the tilde prompt.
 
 
+
+## Installation
+Clone the repo, remove the local changes, install fish and its dependencies, and reload the shell.
+```bash
+# clone the repo
+git clone --bare https://github.com/matan-h/.config ~/.dotfiles/git
+# restore the files (the local changes is set to deletion mode)
+git --git-dir=~/.dotfiles/git  --work-tree=$HOME reset --hard
+# install fish dependencies
+fish ~/.dotfiles/install.fish
+# reload fish
+exec fish
+```
