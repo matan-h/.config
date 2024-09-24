@@ -6,15 +6,8 @@ function add_path
     test -r $argv && fish_add_path $argv
 end
 add_path $HOME/.cargo/bin
-<<<<<<< HEAD
 
-add_path $HOME/.flutter/sdk/flutter/bin
-add_path $HOME/Android/Sdk/cmdline-tools/latest/bin
-
-
-=======
 # add deno
->>>>>>> 963501e (add android)
 add_path $HOME/.deno/bin
 
 # add android/flutter to path.
