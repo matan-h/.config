@@ -166,7 +166,13 @@ alias dotconfig "codium ~/.config/fish/config.fish ~/.aliases.fish ~/.github/REA
 
 # fish shell
 abbr where type
-if 	printf '%s\n' 3.6 $version | sort --check=silent --version-sort # check if fish version is greater then 3.6
+
+# Split version into major and minor parts
+set -l major (string split . $version)[1]
+set -l minor (string split . $version)[2]
+
+# Check if version is >= 3.6
+if test $major -gt 3 -o \( $major -eq 3 -a $minor -ge 6 \)
     abbr --set-cursor=% what "bat (which %)"
 else
     function what
